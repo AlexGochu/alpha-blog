@@ -1,5 +1,7 @@
 class AddTitleToArticles < ActiveRecord::Migration
   def change
-    add_column :articles, :title, :string
+    if !(Article.columns_hash.has_key?('title'))
+      add_column :articles, :title, :string
+    end
   end
 end
